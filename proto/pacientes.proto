@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+service PacienteService {
+    rpc GetAll (Empty) returns (ListaPaciente) {}
+    rpc Get (PacienteResquestId) returns (Paciente) {}
+    rpc Insert (Paciente) returns (Paciente){}
+    rpc Update (Paciente) returns (Paciente){}
+    rpc Remove (PacienteResquestId) returns (Empty){}
+}
+
+message Empty {}
+
+message Paciente {
+    string id = 1;
+    string nome = 2;
+    string cartaoSus = 3;
+    string dataNascimento = 4;
+}
+
+message ListaPaciente {
+    repeated Paciente paciente = 1;
+}
+
+message PacienteResquestId {
+    string id = 1;
+}
