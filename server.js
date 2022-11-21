@@ -23,14 +23,16 @@ const pacientes = [
     },
     {
         id:"a68b823c-7ca6-44bc-b721-fb4d5312cafc",
-        name: "Renan Coral",
+        nome: "Renan Coral",
         cartaoSus: "7912321839012",
         dataNascimento:"1999-05-26"
     }
 ]
+
 server.addService(pacientesProto.PacienteService.service,{
     getAll:(_,callback)=>{
-        callback(null, {pacientes})
+        callback(null, { pacientes })
+        console.log(pacientes)
     },
     get:(call,callback)=>{
         let paciente = pacientes.find(n=>n.id==call.request.id)
@@ -54,7 +56,7 @@ server.addService(pacientesProto.PacienteService.service,{
     },
 
     update:(call, callback)=>{
-        let novoPaciente = paciente.find(n=>n.id == call.request.id)
+        let novoPaciente = pacientes.find(n=>n.id == call.request.id)
 
         if(novoPaciente){
             novoPaciente.nome = call.request.nome
